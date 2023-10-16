@@ -10,6 +10,12 @@
 .color-primary{
 	color: #9A3D36 !important;
 }
+.color-bg-primary{
+	background-color: #9A3D36 !important;
+}
+.color-border-primary{
+	border-color: #9A3D36 !important;
+}
 .logo-font{
 	font-family: 'josefin sans', Arial;
 }
