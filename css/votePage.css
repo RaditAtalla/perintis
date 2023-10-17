@@ -1,0 +1,5 @@
+@media (max-width: 457px){
+  .nav-tabs button{
+    font-size: 1rem !important;
+  }
+}
