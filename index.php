@@ -1,3 +1,9 @@
+<?php 
+require_once("function/login.php");
+if(isset($_POST["loginButton"])){
+  login($_POST["username"], $_POST["password"]);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -21,24 +27,30 @@
       </div>
 			<div class="col-lg-5 col-12 h-100 d-flex flex-column justify-content-center px-5" style="gap: 5em;border-top: 5px solid #9a3d36;">
 				<h2 class="display-3 fw-bold color-text-primary m-0">Login</h2>
-				<form action="" class="d-flex flex-column gap-5">
+				<form action="" method="post" class="d-flex flex-column gap-5">
 					<div class="d-flex flex-column gap-4">
 						<div class="d-flex flex-column gap-2">
 							<label for="" class="color-text-secondary fs-5">Username</label>
+							<?php
+							if(!$_SESSION['usernameExist']) echo '<p class="color-primary fst-italic">Username tidak ada!</p>';
+							?>
 							<div>
-								<input type="text" class="py-3 px-3 border-0 w-100 rounded-1" style="background: #F1F1F1;" placeholder="Cth: 545211210">
+								<input type="text" class="py-3 px-3 border-0 w-100 rounded-1" style="background: #F1F1F1; outline: none;" placeholder="Cth: 545211210" autocomplete="off" autofocus required name="username">
 								<div style="height: 3px; width: 75%; background-color: #9A3D36;"></div>
 							</div>
 						</div>
 						<div class="d-flex flex-column gap-2">
 							<label for="" class="color-text-secondary fs-5">Password</label>
+							<?php
+							if(!$_SESSION['passwordCorrect']) echo '<p class="color-primary fst-italic">Password salah!</p>';
+							?>
 							<div>
-								<input type="password" class="py-3 px-3 border-0 w-100 rounded-1" style="background: #F1F1F1;" placeholder="********" >
+								<input type="password" class="py-3 px-3 border-0 w-100 rounded-1" style="background: #F1F1F1; outline: none;" placeholder="********" name="password" autocomplete="off" required>
 								<div style="height: 3px; width: 50%; background-color: #9A3D36;"></div>
 							</div>
 						</div>
 					</div>
-					<a href="pages/vote.php" class="text-center text-decoration-none border-0 text-light fw-semibold py-3 rounded-3 fs-5" style="background: #9A3D36;">Login</a>
+					<button href="pages/vote.php" class="text-center text-decoration-none border-0 text-light fw-semibold py-3 rounded-3 fs-5" style="background: #9A3D36;" name="loginButton">Login</button>
 				</form>
 			</div>
 		</div>
