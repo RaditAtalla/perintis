@@ -12,4 +12,5 @@ function removeDots($string) {
 
 function splitByDot($string) {
   $string = explode('.', $string);
+  return $string;
 }
