@@ -87,10 +87,9 @@ $bendahara = query('bendahara');
                       <div>
                         <p class="text-center text-decoration-underline color-primary fw-medium fs-5">Misi</p>
                         <ol>
-                          <li>Memajukan prestasi akademik dan non akademik SMK Telkom Medan</li>
-                          <li>Meningkatkan kedisiplinan siswa melalui kegiatan yang unik dan tidak membosankan</li>
-                          <li>Menumbuhkan rasa cinta terhadap Negara Kesatuan Republik Indonesia.</li>
-                          <li>Menyelenggarakan kegiatan pengembangan dan pelatihan yang berlandaskan nilai dan norma Pancasila.</li>
+													<?php $misi = splitByDot($k['misi']); foreach($misi as $ms) : ?>
+                          <li><?= $ms ?></li>
+													<?php endforeach; ?>
                         </ol>
                       </div>
                     </div>
@@ -136,10 +135,9 @@ $bendahara = query('bendahara');
                       <div>
                         <p class="text-center text-decoration-underline color-primary fw-medium fs-5">Misi</p>
                         <ol>
-                          <li>Memajukan prestasi akademik dan non akademik SMK Telkom Medan</li>
-                          <li>Meningkatkan kedisiplinan siswa melalui kegiatan yang unik dan tidak membosankan</li>
-                          <li>Menumbuhkan rasa cinta terhadap Negara Kesatuan Republik Indonesia.</li>
-                          <li>Menyelenggarakan kegiatan pengembangan dan pelatihan yang berlandaskan nilai dan norma Pancasila.</li>
+													<?php $misi = splitByDot($s['misi']); foreach($misi as $ms) : ?>
+                          <li><?= $ms ?></li>
+													<?php endforeach; ?>
                         </ol>
                       </div>
                     </div>
@@ -185,10 +183,9 @@ $bendahara = query('bendahara');
                       <div>
                         <p class="text-center text-decoration-underline color-primary fw-medium fs-5">Misi</p>
                         <ol>
-                          <li>Memajukan prestasi akademik dan non akademik SMK Telkom Medan</li>
-                          <li>Meningkatkan kedisiplinan siswa melalui kegiatan yang unik dan tidak membosankan</li>
-                          <li>Menumbuhkan rasa cinta terhadap Negara Kesatuan Republik Indonesia.</li>
-                          <li>Menyelenggarakan kegiatan pengembangan dan pelatihan yang berlandaskan nilai dan norma Pancasila.</li>
+													<?php $misi = splitByDot($b['misi']); foreach($misi as $ms) : ?>
+                          <li><?= $ms ?></li>
+													<?php endforeach; ?>
                         </ol>
                       </div>
                     </div>
