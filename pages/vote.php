@@ -1,4 +1,10 @@
 <?php 
+session_start();
+
+if (!$_SESSION['loginSuccess']) {
+	header('location: ../index.php');
+}
+
 require_once("../function/query.php");
 require_once("../function/stringEditor.php");
 $ketua = query("ketua");

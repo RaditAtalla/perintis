@@ -25,5 +25,6 @@ function login($username, $password){
     return;
   }
 
+  $_SESSION['loginSuccess'] = true;
   header('location: pages\vote.php');
 }

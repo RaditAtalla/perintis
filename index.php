@@ -1,4 +1,8 @@
 <?php 
+session_start();
+if($_SESSION['loginSuccess']) {
+	header('location: pages/vote.php');
+}
 require_once("function/login.php");
 if(isset($_POST["loginButton"])){
   login($_POST["username"], $_POST["password"]);
