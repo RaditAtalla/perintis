@@ -1,3 +1,12 @@
+<?php 
+require_once("../function/query.php");
+require_once("../function/stringEditor.php");
+$ketua = query("ketua");
+$sekretaris = query('sekretaris');
+$bendahara = query('bendahara');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -52,26 +61,12 @@
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
+				<!-- ketua tab -->
 				<div class="tab-pane fade show active container-fluid" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
 					<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+						<?php foreach($ketua as $k) : ?>
 						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam Radithya</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="confirm.php" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmketua">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-              <div class="modal" tabindex="-1" id="vmketua">
+              <div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($k['nama'])) ?>">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -81,7 +76,7 @@
                     <div class="modal-body">
                       <div>
                         <p class="text-center text-decoration-underline color-primary fw-medium fs-5">Visi</p>
-                        <p class="text-center fs-4">“(ketua)Mewujudkan OSIS yang berwawasan luas, berkepribadian baik, dan bergotong-royong.”</p>
+                        <p class="text-center fs-4">“<?= $k['visi'] ?>”</p>
                       </div>
                       <div>
                         <p class="text-center text-decoration-underline color-primary fw-medium fs-5">Misi</p>
@@ -97,74 +92,30 @@
                 </div>
               </div>
 							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
+								<img src="../img/<?= $k['gambar'] ?>" loading="lazy" class="card-img-top w-100 rounded-top-1" alt="foto kandidat" style="height: 250px; object-fit: cover;" />
+								<!-- <div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div> -->
 								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam Radithya</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
+									<h5 class="card-title m-0"><?= $k['nama'] ?></h5>
+									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0"><?= $k['kelas'] ?></p>
 									<div class="container-fluid">
 										<div class="row row-cols-1 gap-2">
 											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmketua">Visi & Misi</a>
+											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($k['nama'])) ?>">Visi & Misi</a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam Radithya</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmketua">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam Radithya</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmketua">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam Radithya</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmketua">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						<?php endforeach; ?>
 					</div>
 				</div>
+				
+				<!-- sekretaris tab -->
 				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
 					<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+					<?php foreach($sekretaris as $s) : ?>
 						<div class="col" style="min-width: 100px !important; max-width: 500px">
-              <div class="modal" tabindex="-1" id="vmsekret">
+              <div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($s['nama'])) ?>">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -174,7 +125,7 @@
                     <div class="modal-body">
                       <div>
                         <p class="text-center text-decoration-underline color-primary fw-medium fs-5">Visi</p>
-                        <p class="text-center fs-4">“(sekret)Mewujudkan OSIS yang berwawasan luas, berkepribadian baik, dan bergotong-royong.”</p>
+                        <p class="text-center fs-4">“<?= $s['visi'] ?>”</p>
                       </div>
                       <div>
                         <p class="text-center text-decoration-underline color-primary fw-medium fs-5">Misi</p>
@@ -190,92 +141,30 @@
                 </div>
               </div>
 							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
+								<img src="../img/<?= $s['gambar'] ?>" loading="lazy" class="card-img-top w-100 rounded-top-1" alt="foto kandidat" style="height: 250px; object-fit: cover;" />
+								<!-- <div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div> -->
 								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
+									<h5 class="card-title m-0"><?= $s['nama'] ?></h5>
+									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0"><?= $s['kelas'] ?></p>
 									<div class="container-fluid">
 										<div class="row row-cols-1 gap-2">
 											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmsekret">Visi & Misi</a>
+											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($s['nama'])) ?>">Visi & Misi</a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmsekret">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmsekret">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmsekret">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-              <div class="modal" tabindex="-1" id="visimisi1">
-              </div>
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">M. Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmsekret">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						<?php endforeach; ?>
 					</div>
 				</div>
+
+				<!-- bendahara tab -->
 				<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
 					<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+					<?php foreach($bendahara as $b) : ?>
 						<div class="col" style="min-width: 100px !important; max-width: 500px">
-              <div class="modal" tabindex="-1" id="vmbenda">
+              <div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($b['nama'])) ?>">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -285,7 +174,7 @@
                     <div class="modal-body">
                       <div>
                         <p class="text-center text-decoration-underline color-primary fw-medium fs-5">Visi</p>
-                        <p class="text-center fs-4">“(benda)Mewujudkan OSIS yang berwawasan luas, berkepribadian baik, dan bergotong-royong.”</p>
+                        <p class="text-center fs-4">“<?= $b['visi'] ?>”</p>
                       </div>
                       <div>
                         <p class="text-center text-decoration-underline color-primary fw-medium fs-5">Misi</p>
@@ -301,84 +190,21 @@
                 </div>
               </div>
 							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
+								<img src="../img/<?= $b['gambar'] ?>" loading="lazy" class="card-img-top w-100 rounded-top-1" alt="foto kandidat" style="height: 250px; object-fit: cover;" />
+								<!-- <div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div> -->
 								<div class="card-body">
-									<h5 class="card-title m-0">Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
+									<h5 class="card-title m-0"><?= $b['nama'] ?></h5>
+									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0"><?= $b['kelas'] ?></p>
 									<div class="container-fluid">
 										<div class="row row-cols-1 gap-2">
 											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmbenda">Visi & Misi</a>
+											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($b['nama'])) ?>">Visi & Misi</a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmbenda">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmbenda">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmbenda">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col" style="min-width: 100px !important; max-width: 500px">
-							<div class="card p-0 rounded-1 shadow">
-								<!-- <img src="..." class="card-img-top" alt="..." /> -->
-								<div class="w-100 bg-secondary-subtle rounded-top-1" style="height: 250px"></div>
-								<div class="card-body">
-									<h5 class="card-title m-0">Ahlam</h5>
-									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0">XII RPL 1</p>
-									<div class="container-fluid">
-										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#vmbenda">Visi & Misi</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
