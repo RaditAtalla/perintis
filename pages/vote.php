@@ -8,7 +8,7 @@ if(!$_SESSION['loggedIn']) {
 require_once("../function/query.php");
 require_once("../function/stringEditor.php");
 $kandidat = query("SELECT * FROM kandidat");
-// $highestId = query("SELECT MAX(id) FROM kandidat");
+$highestId = query("SELECT MAX(id) FROM kandidat")[0]["MAX(id)"];
 $ketua = query("SELECT * FROM kandidat WHERE jabatan = 'ketua'");
 $sekretaris = query("SELECT * FROM kandidat WHERE jabatan = 'sekretaris'");
 $bendahara = query("SELECT * FROM kandidat WHERE jabatan = 'bendahara'");
