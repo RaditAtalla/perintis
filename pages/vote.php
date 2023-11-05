@@ -1,15 +1,17 @@
 <?php 
 session_start();
 
-if (!$_SESSION['loginSuccess']) {
+if(!$_SESSION['loggedIn']) {
 	header('location: ../index.php');
 }
 
 require_once("../function/query.php");
 require_once("../function/stringEditor.php");
-$ketua = query("ketua");
-$sekretaris = query('sekretaris');
-$bendahara = query('bendahara');
+$kandidat = query("SELECT * FROM kandidat");
+// $highestId = query("SELECT MAX(id) FROM kandidat");
+$ketua = query("SELECT * FROM kandidat WHERE jabatan = 'ketua'");
+$sekretaris = query("SELECT * FROM kandidat WHERE jabatan = 'sekretaris'");
+$bendahara = query("SELECT * FROM kandidat WHERE jabatan = 'bendahara'");
 
 ?>
 
@@ -69,7 +71,7 @@ $bendahara = query('bendahara');
 			<div class="tab-content" id="nav-tabContent">
 				<!-- ketua tab -->
 				<div class="tab-pane fade show active container-fluid" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-					<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+					<form method="get" class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
 						<?php foreach($ketua as $k) : ?>
 						<div class="col" style="min-width: 100px !important; max-width: 500px">
               <div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($k['nama'])) ?>">
@@ -104,7 +106,7 @@ $bendahara = query('bendahara');
 									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0"><?= $k['kelas'] ?></p>
 									<div class="container-fluid">
 										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
+											<button type="submit" name="vote<?= $k['id'] ?>" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</button>
 											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($k['nama'])) ?>">Visi & Misi</a>
 										</div>
 									</div>
@@ -112,12 +114,12 @@ $bendahara = query('bendahara');
 							</div>
 						</div>
 						<?php endforeach; ?>
-					</div>
+					</form>
 				</div>
 				
 				<!-- sekretaris tab -->
 				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-					<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+					<form method="get" class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
 					<?php foreach($sekretaris as $s) : ?>
 						<div class="col" style="min-width: 100px !important; max-width: 500px">
               <div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($s['nama'])) ?>">
@@ -152,7 +154,7 @@ $bendahara = query('bendahara');
 									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0"><?= $s['kelas'] ?></p>
 									<div class="container-fluid">
 										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
+											<button type="submit" name="vote<?= $s['id'] ?>" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</button>
 											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($s['nama'])) ?>">Visi & Misi</a>
 										</div>
 									</div>
@@ -160,12 +162,12 @@ $bendahara = query('bendahara');
 							</div>
 						</div>
 						<?php endforeach; ?>
-					</div>
+					</form>
 				</div>
 
 				<!-- bendahara tab -->
 				<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-					<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+					<form method="get" class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
 					<?php foreach($bendahara as $b) : ?>
 						<div class="col" style="min-width: 100px !important; max-width: 500px">
               <div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($b['nama'])) ?>">
@@ -200,16 +202,15 @@ $bendahara = query('bendahara');
 									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0"><?= $b['kelas'] ?></p>
 									<div class="container-fluid">
 										<div class="row row-cols-1 gap-2">
-											<a href="#" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</a>
-											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($b['nama'])) ?>">Visi & Misi</a>
+											<button type="submit" name="vote<?= $b['id'] ?>" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</button>
+											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($s['nama'])) ?>">Visi & Misi</a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<?php endforeach; ?>
-					</div>
-				</div>
+					</form>
 			</div>
 		</main>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

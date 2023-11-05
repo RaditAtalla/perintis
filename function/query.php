@@ -1,14 +1,14 @@
 <?php
 require_once 'connection.php';
 
-function query($jabatan) {
+function query($query) {
   global $connect;
 
   // Get data from database
-  $query = mysqli_query($connect, "SELECT * FROM kandidat WHERE jabatan = '$jabatan'");
+  $result = mysqli_query($connect, $query);
   
   $rows = [];
-  while($row = mysqli_fetch_assoc($query)) {
+  while($row = mysqli_fetch_assoc($result)) {
     $rows[] = $row;
   }
   
