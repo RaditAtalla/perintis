@@ -1,14 +1,18 @@
 <?php 
 require_once("function/login.php");
 
+
 if(isset($_POST["loginButton"])){
-  login($_POST["username"], $_POST["password"]);
+	login($_POST["username"], $_POST["password"]);
 	$_SESSION['loggedIn'] = true;
 }
 
 if($_SESSION['loggedIn']) {
 	header('location: ./pages/vote.php');
+	exit;
 }
+
+$_SESSION['loggedIn'] = false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
