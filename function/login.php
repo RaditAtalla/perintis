@@ -20,10 +20,10 @@ function login($username, $password){
 
   // Checks if the password is wrong
   if(!password_verify($password, $hashedPassword)){
-    // echo "password salah";
     $_SESSION['passwordCorrect'] = false;
     return;
   }
 
+  $_SESSION['loggedIn'] = true;
   header('location: pages\vote.php');
 }

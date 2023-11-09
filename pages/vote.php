@@ -13,6 +13,12 @@ $ketua = query("SELECT * FROM kandidat WHERE jabatan = 'ketua'");
 $sekretaris = query("SELECT * FROM kandidat WHERE jabatan = 'sekretaris'");
 $bendahara = query("SELECT * FROM kandidat WHERE jabatan = 'bendahara'");
 
+for($i = 0; $i <= $highestId; $i++) {
+	echo $i;
+}
+// switch($ketuaSelectedId) {
+
+// }
 ?>
 
 <!DOCTYPE html>
