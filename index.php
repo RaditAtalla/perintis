@@ -2,7 +2,7 @@
 require_once("function/login.php");
 
 if(isset($_SESSION['loggedIn'])) {
-	header('location: pages/vote.php');
+	header('location: pages/voteKetua.php');
 	exit;
 }
 
@@ -57,7 +57,7 @@ if(isset($_POST["loginButton"])){
 							</div>
 						</div>
 					</div>
-					<button href="pages/vote.php" class="text-center text-decoration-none border-0 text-light fw-semibold py-3 rounded-3 fs-5" style="background: #9A3D36;" name="loginButton">Login</button>
+					<button class="text-center text-decoration-none border-0 text-light fw-semibold py-3 rounded-3 fs-5" style="background: #9A3D36;" name="loginButton">Login</button>
 				</form>
 			</div>
 		</div>
