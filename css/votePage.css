@@ -1,3 +1,7 @@
+.vote-btn input[type=radio]:checked + label {
+  background-color: #4a4a4a !important;
+}
+
 @media (max-width: 457px){
   .nav-tabs button{
     font-size: 1rem !important;

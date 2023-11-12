@@ -13,11 +13,23 @@ $ketua = query("SELECT * FROM kandidat WHERE jabatan = 'ketua'");
 $sekretaris = query("SELECT * FROM kandidat WHERE jabatan = 'sekretaris'");
 $bendahara = query("SELECT * FROM kandidat WHERE jabatan = 'bendahara'");
 
-for($i = 0; $i <= $highestId; $i++) {
-	echo $i;
-}
-// switch($ketuaSelectedId) {
-
+// foreach($ketua as $k) {
+// 	if(isset($_POST["vote{$k['id']}"])) {
+// 		$_SESSION['selectedKetua'] = $k['nama'];
+// 		echo $k['nama'];
+// 	}
+// }
+// foreach($sekretaris as $s) {
+// 	if(isset($_POST["vote{$s['id']}"])) {
+// 		$_SESSION['selectedSekretaris'] = $s['nama'];
+// 		echo $s['nama'];
+// 	}
+// }
+// foreach($bendahara as $b) {
+// 	if(isset($_POST["vote{$b['id']}"])) {
+// 		$_SESSION['selectedBendahara'] = $b['nama'];
+// 		echo $b['nama'];
+// 	}
 // }
 ?>
 
@@ -72,12 +84,13 @@ for($i = 0; $i <= $highestId; $i++) {
 					<button class="nav-link fs-4" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
 						Bendahara
 					</button>
+					<button class="color-bg-primary text-light rounded border-0 px-2 fs-5">Kumpulkan</button>
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
 				<!-- ketua tab -->
 				<div class="tab-pane fade show active container-fluid" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-					<form method="get" class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+					<form method="post" class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
 						<?php foreach($ketua as $k) : ?>
 						<div class="col" style="min-width: 100px !important; max-width: 500px">
               <div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($k['nama'])) ?>">
@@ -112,7 +125,11 @@ for($i = 0; $i <= $highestId; $i++) {
 									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0"><?= $k['kelas'] ?></p>
 									<div class="container-fluid">
 										<div class="row row-cols-1 gap-2">
-											<button type="submit" name="vote<?= $k['id'] ?>" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</button>
+											<div class="vote-btn d-flex justify-content-center text-center position-relative p-0" id="votee">
+												<input type="radio" name="kandidatKetua" class="position-absolute opacity-0" id="k<?= $k['id'] ?>" value="<?= removeDots(removeSpaces($k['nama'])) ?>">
+												<label for="k<?= $k['id'] ?>" class="color-bg-primary text-light rounded w-100 p-2" style="cursor: pointer;" >Vote</label>
+											</div>
+											<!-- <button type="submit" name="vote<?= $k['id'] ?>" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</button> -->
 											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($k['nama'])) ?>">Visi & Misi</a>
 										</div>
 									</div>
@@ -125,7 +142,7 @@ for($i = 0; $i <= $highestId; $i++) {
 				
 				<!-- sekretaris tab -->
 				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-					<form method="get" class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+					<form method="post" class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
 					<?php foreach($sekretaris as $s) : ?>
 						<div class="col" style="min-width: 100px !important; max-width: 500px">
               <div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($s['nama'])) ?>">
@@ -160,6 +177,7 @@ for($i = 0; $i <= $highestId; $i++) {
 									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0"><?= $s['kelas'] ?></p>
 									<div class="container-fluid">
 										<div class="row row-cols-1 gap-2">
+											<input type="radio" name="kandidatSekretaris" id="<?= removeDots(removeSpaces($s['nama'])) ?>" value="<?= removeDots(removeSpaces($s['nama'])) ?>" class="d-none">
 											<button type="submit" name="vote<?= $s['id'] ?>" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</button>
 											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($s['nama'])) ?>">Visi & Misi</a>
 										</div>
@@ -173,7 +191,7 @@ for($i = 0; $i <= $highestId; $i++) {
 
 				<!-- bendahara tab -->
 				<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-					<form method="get" class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+					<form method="post" class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
 					<?php foreach($bendahara as $b) : ?>
 						<div class="col" style="min-width: 100px !important; max-width: 500px">
               <div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($b['nama'])) ?>">
@@ -208,6 +226,7 @@ for($i = 0; $i <= $highestId; $i++) {
 									<p class="card-text color-text-secondary" style="margin: 0 0 5em 0"><?= $b['kelas'] ?></p>
 									<div class="container-fluid">
 										<div class="row row-cols-1 gap-2">
+										<input type="radio" name="kandidatBendahara" id="<?= removeDots(removeSpaces($b['nama'])) ?>" value="<?= removeDots(removeSpaces($b['nama'])) ?>" class="d-none">
 											<button type="submit" name="vote<?= $b['id'] ?>" class="btn color-bg-primary text-light d-flex align-items-center justify-content-center">Vote</button>
 											<a href="#" class="btn color-border-primary color-primary" data-bs-toggle="modal" data-bs-target="#<?= removeSpaces(removeDots($s['nama'])) ?>">Visi & Misi</a>
 										</div>
@@ -216,6 +235,11 @@ for($i = 0; $i <= $highestId; $i++) {
 							</div>
 						</div>
 						<?php endforeach; ?>
+					</form>
+			</div>
+				<!-- submit tab -->
+				<div class="tab-pane fade" id="nav-else" role="tabpanel" aria-labelledby="nav-else-tab" tabindex="0">
+					<form method="post" class="d-flex justify-content-center mt-5">
 					</form>
 			</div>
 		</main>
