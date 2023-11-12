@@ -25,5 +25,5 @@ function login($username, $password){
   }
 
   $_SESSION['loggedIn'] = true;
-  header('location: pages\vote.php');
+  header('location: pages\voteKetua.php');
 }
