@@ -1,7 +1,7 @@
 <?php 
 require_once("function/login.php");
 
-if($_SESSION['loggedIn']) {
+if(isset($_SESSION['loggedIn'])) {
 	header('location: pages/vote.php');
 	exit;
 }
