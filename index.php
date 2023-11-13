@@ -7,6 +7,7 @@ if(isset($_SESSION['loggedIn'])) {
 }
 
 if(isset($_POST["loginButton"])){
+	$_SESSION['username'] = $_POST['username'];
 	login($_POST["username"], $_POST["password"]);
 }
 
