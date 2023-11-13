@@ -5,8 +5,19 @@ if(!$_SESSION['loggedIn']) {
 	header('location: ../index.php');
 }
 
+require_once("../function/connection.php");
 require_once("../function/query.php");
 require_once("../function/stringEditor.php");
+
+$userRow = mysqli_query($connect, "SELECT nama FROM user WHERE username = '{$_SESSION['username']}'");
+$usernameName = mysqli_fetch_assoc($userRow)['nama'];
+$usernameHasVoted = mysqli_query($connect, "SELECT voter_name FROM votes WHERE voter_name = '$usernameName'");
+if(mysqli_fetch_assoc($usernameHasVoted) > 0) {
+	$_SESSION['hasVoted'] = true;
+	unset($_SESSION['loggedIn']);
+	header('location: ../index.php');
+}
+
 $ketua = query("SELECT * FROM kandidat WHERE jabatan = 'ketua'");
 $sekretaris = query("SELECT * FROM kandidat WHERE jabatan = 'sekretaris'");
 $bendahara = query("SELECT * FROM kandidat WHERE jabatan = 'bendahara'");

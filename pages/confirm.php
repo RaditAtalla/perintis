@@ -10,10 +10,22 @@ if(!isset($_SESSION['chosenKetua']) && !isset($_SESSION['chosenSekretaris']) && 
   header('location: ./voteKetua.php');
 }
 
+$voter = query("SELECT * FROM user WHERE username = '{$_SESSION['username']}'")[0];
 $chosenKetua = query("SELECT * FROM kandidat WHERE nama = '{$_SESSION['chosenKetua']}'")[0];
 $chosenSekretaris = query("SELECT * FROM kandidat WHERE nama = '{$_SESSION['chosenSekretaris']}'")[0];
 $chosenBendahara = query("SELECT * FROM kandidat WHERE nama = '{$_SESSION['chosenBendahara']}'")[0];
 
+if(isset($_POST['done'])) {
+  global $connect;
+  global $voter;
+  global $chosenKetua;
+  global $chosenSekretaris;
+  global $chosenBendahara;
+  $query = "INSERT INTO votes VALUES ('', '{$voter['nama']}', '{$voter['kelas']}', '{$chosenKetua['nama']}', '{$chosenSekretaris['nama']}', '{$chosenBendahara['nama']}')";
+  mysqli_query($connect, $query);
+
+  header('location: ../function/logout.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +49,7 @@ $chosenBendahara = query("SELECT * FROM kandidat WHERE nama = '{$_SESSION['chose
 				<img src="../img/osisskatel.png" alt="Logo OSIS" width="60px" />
 			</div>
 		</header>
-    <main class="d-flex flex-column align-items-center py-5 py-sm-0">
+    <form method="post" class="d-flex flex-column align-items-center py-5 py-sm-0">
       <h2 class="display-4 fw-bold color-text-primary mb-3">Konfirmasi</h2>
       <div class="mb-3 mb-md-0">
         <div class="row row-cols-md-3 row-cols-1 gx-5 gy-3 gy-md-0">
@@ -59,9 +71,9 @@ $chosenBendahara = query("SELECT * FROM kandidat WHERE nama = '{$_SESSION['chose
         </div>
       </div>
       <p class="color-text-primary text-center mb-5 fs-5 px-5" style="min-width: 50px; max-width: 600px;">Anda telah memilih kandidat - kandidat diatas. Jika anda sudah yakin dengan pilihan anda, tekan tombol dibawah ini. Jika belum, tekan tombol kembali</p>
-      <a href="../function/logout.php" class="color-bg-primary text-light fw-bold py-2 px-5 rounded-2 text-decoration-none mb-2">Selesai & Log out</a>
+      <button name="done" class="color-bg-primary text-light fw-bold py-2 px-5 rounded-2 text-decoration-none mb-2 border-0">Selesai & Log out</button>
       <a href="./voteKetua.php" class="color-text-primary">Kembali</a>
-    </main>
+    </form>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	</body>
 </html>
