@@ -1,4 +1,10 @@
 <?php 
+  session_start();
+
+  if(!isset($_SESSION['isAdmin'])) {
+    header('locatoin: ../index.php');
+  }
+
   $connect = mysqli_connect('localhost', 'root', '', 'perintis');
 
   if(isset($_POST['submit'])) {
