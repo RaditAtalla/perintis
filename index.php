@@ -6,6 +6,11 @@ if(isset($_SESSION['loggedIn'])) {
 	exit;
 }
 
+if(isset($_SESSION['isAdmin'])) {
+	header('location: pages/admin.php');
+	exit;
+}
+
 if(isset($_POST["loginButton"])){
 	$_SESSION['username'] = $_POST['username'];
 	login($_POST["username"], $_POST["password"]);

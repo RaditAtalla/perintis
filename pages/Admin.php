@@ -1,4 +1,10 @@
 <?php 
+	session_start();
+
+	if(!isset($_SESSION['isAdmin'])) {
+		header('location: ../index.php');
+	}
+
   require_once("../function/connection.php");
   $result = mysqli_query($connect, "SELECT * FROM votes WHERE ketua_selected = 'Christian Gerald'");
   $kandidat1 = mysqli_fetch_assoc($result);
