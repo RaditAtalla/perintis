@@ -14,7 +14,7 @@ $countVoters = mysqli_num_rows($getVoters);
 $getHasVoted = mysqli_query($connect, "SELECT * FROM votes");
 $countHasVoted = mysqli_num_rows($getHasVoted);
 
-$votedPercentage = round(($countHasVoted / $countVoters) * 100);
+$votedPercentage = ceil(($countHasVoted / $countVoters) * 100);
 ?>
 
 <!DOCTYPE html>
