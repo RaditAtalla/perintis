@@ -58,7 +58,7 @@ if(isset($_POST['selanjutnya'])){
 				</nav>
 				<div class="tab-content" id="nav-tabContent">
 					<div class="tab-pane fade show active container-fluid" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-						<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
+						<div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 gy-3 justify-content-center mt-3">
 							<?php foreach($sekretaris as $row) : ?>
 							<div class="col" style="min-width: 100px !important; max-width: 500px">
 								<div class="modal" tabindex="-1" id="<?= removeSpaces(removeDots($row['nama'])) ?>">
