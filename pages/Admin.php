@@ -62,7 +62,6 @@ $votedPercentage = round(($countHasVoted / $countVoters) * 100);
 							<th scope="col">Nama</th>
 							<th scope="col">Jabatan</th>
 							<th scope="col">Suara</th>
-							<th scope="col">Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -74,7 +73,6 @@ $votedPercentage = round(($countHasVoted / $countVoters) * 100);
 								<td><?= $row['nama']; ?></td>
 								<td><?= $row['jabatan']; ?></td>
 								<td><?= $countKetua[$j] ?></td>
-								<td><a href="">Detail</a></td>
 							</tr>
 							<?php $i++ ?>
 							<?php $j++ ?>
@@ -91,7 +89,6 @@ $votedPercentage = round(($countHasVoted / $countVoters) * 100);
 							<th scope="col">Nama</th>
 							<th scope="col">Jabatan</th>
 							<th scope="col">Suara</th>
-							<th scope="col">Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -103,7 +100,6 @@ $votedPercentage = round(($countHasVoted / $countVoters) * 100);
 								<td><?= $row['nama']; ?></td>
 								<td><?= $row['jabatan']; ?></td>
 								<td><?= $countSekretaris[$j] ?></td>
-								<td><a href="">Detail</a></td>
 							</tr>
 							<?php $i++ ?>
 							<?php $j++ ?>
@@ -120,7 +116,6 @@ $votedPercentage = round(($countHasVoted / $countVoters) * 100);
 							<th scope="col">Nama</th>
 							<th scope="col">Jabatan</th>
 							<th scope="col">Suara</th>
-							<th scope="col">Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -132,7 +127,6 @@ $votedPercentage = round(($countHasVoted / $countVoters) * 100);
 								<td><?= $row['nama']; ?></td>
 								<td><?= $row['jabatan']; ?></td>
 								<td><?= $countBendahara[$j] ?></td>
-								<td><a href="">Detail</a></td>
 							</tr>
 							<?php $i++ ?>
 							<?php $j++ ?>
