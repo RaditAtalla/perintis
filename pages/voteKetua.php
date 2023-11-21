@@ -54,11 +54,8 @@ if(isset($_POST['selanjutnya'])){
 					</div>
 					<div class="modal-body">
 						<ol class="fs-4">
-              <li>Pada halaman pemilihan ketua, klik tombol <b>vote</b> pada kandidat yang ingin dipilih. Anda juga dapat melihat visi dan misi dari kandidat tersebut dengan menekan tombol <b>visi & misi.</b></li>
-              <li>Setelah memilih salah satu kandidat ketua, klik tombol <b>Sekretaris</b> untuk memasuki halaman pemilihan sekretaris, mekanismenya sama dengan halaman pemilihan ketua (anda baru dapat memilih sekretaris setelah anda memilih ketua).</li>
-              <li>Setelah itu, lakukan hal yang sama dengan pemilihan <b>Bendahara</b></li>
-              <li>Setelah anda telah memiilh satu kandidat untuk masing-masing jabatan, klik tombol <b>Selanjutnya</b> di bagian kanan atas halaman pemilihan bendahara. Tombol tersebut akan membawa anda ke halaman konfirmasi.</li>
-              <li>Pada halaman konfirmasi, anda dapat meninjau kembali pilihan anda. Jika sudah yakin dengan pilihan anda, silahkan tekan tombol <b>Selesai & Log out</b>. Jika ingin mengubah pilihan, tekan tombol <b>Kembali</b>.</li>
+              <li>Pada halaman pemilihan kandidat, klik tombol <b>vote</b> pada kandidat yang ingin dipilih, lalu tekan tombol selanjutnya pada bagian atas halaman untuk lanjut ke halaman jabatan selanjutnya. Anda juga dapat melihat visi dan misi dari kandidat tersebut dengan menekan tombol <b>visi & misi.</b></li>
+              <li>Setelah memilih kandidat-kandidat untuk tiap-tiap jabatan, anda akan dibawa pada halaman konfirmasi dimana anda dapat meninjau <b>kembali</b> pilihan anda. Jika ingin mengganti pilihan klik tombol kembali, jika sudah selesai, maka tekan tombol <b>Selesai & log out</b></li>
             </ol>
 					</div>
 				</div>
